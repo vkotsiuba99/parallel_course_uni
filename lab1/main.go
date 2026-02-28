@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	targetDir := "./data"
+	//targetDir := "./data"
 
 	//var fileCount int64 = 20
 	//_ = os.RemoveAll(targetDir)
@@ -26,9 +26,9 @@ func main() {
 	runCPUBound(100_000_000, false)
 	runCPUBound(100_000_000, true)
 
-	runMemoryBound(10000, false)
-	runMemoryBound(10000, true)
-
-	runIOBound(targetDir, false)
-	runIOBound(targetDir, true)
+	//runMemoryBound(10000, false)
+	//runMemoryBound(10000, true)
+	//
+	//runIOBound(targetDir, false)
+	//runIOBound(targetDir, true)
 }
