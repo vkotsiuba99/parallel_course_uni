@@ -34,7 +34,7 @@ func main() {
 		go transferRaceCondition(f, t, 10, &wg)
 	}
 	wg.Wait()
-	fmt.Printf("Balance after після Condition: %d \n", getTotalBalance(accounts))
+	fmt.Printf("Balance after Condition: %d \n", getTotalBalance(accounts))
 
 	// reload data
 	accounts, _ = LoadAccounts(filename)
