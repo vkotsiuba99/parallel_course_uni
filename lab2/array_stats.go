@@ -15,7 +15,7 @@ func statsSequential(data []int64) (int64, int64, int64) {
 	return minV, maxV, sumV
 }
 
-func statsForkJoin(data []int64) (int64, int64, int64) {
+func statsForkJoinLegacy(data []int64) (int64, int64, int64) {
 	if int64(len(data)) <= 50000 {
 		return statsSequential(data)
 	}
@@ -25,11 +25,11 @@ func statsForkJoin(data []int64) (int64, int64, int64) {
 
 	// Fork
 	go func() {
-		minL, maxL, sumL := statsForkJoin(data[:mid])
+		minL, maxL, sumL := statsForkJoinLegacy(data[:mid])
 		resChan <- struct{ min, max, sum int64 }{minL, maxL, sumL}
 	}()
 
-	minR, maxR, sumR := statsForkJoin(data[mid:])
+	minR, maxR, sumR := statsForkJoinLegacy(data[mid:])
 	left := <-resChan // Join
 
 	return min(left.min, minR), max(left.max, maxR), left.sum + sumR

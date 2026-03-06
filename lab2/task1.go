@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-func main() {
+func main2() {
 	tagTypes := []string{"<div>", "<p>", "<a>"}
 	docs := make([][]string, 10_000)
 	for i := range docs {
@@ -42,7 +42,7 @@ func main() {
 	fmt.Printf("Sequential Stats: Min:%d Max:%d Avg:%d (Time: %v)\n", minS, maxS, sumS/1000000, time.Since(startS))
 
 	startP = time.Now()
-	minP, maxP, sumP := statsForkJoin(arr)
+	minP, maxP, sumP := statsForkJoinLegacy(arr)
 	fmt.Printf("Parallel Fork-Join: Min:%d Max:%d Avg:%d (Time: %v)\n", minP, maxP, sumP/1000000, time.Since(startP))
 
 	time.Sleep(1 * time.Second)
